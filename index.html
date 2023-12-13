@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+		<title>Offertepunt Admin Panel</title>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.0.3-beta/dist/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+        <style>
+            :root {
+                --color_2: #060B57; 
+                --color_3: #109CD9; 
+                --color_7: #CDCEDD; 
+                --color_text_1: #000000;
+                --color_text_2: #FFFFFF;
+            }
+            [type=checkbox].filled-in:checked+span:not(.lever):before{
+                top: 3px;
+            }
+            [type=checkbox].filled-in:checked+span:not(.lever):after{
+                top: 3px;
+                border-radius: 5px;
+                background-color: var(--color_3);
+                border: 2px solid var(--color_3);
+            }
+            .but{
+                margin: 0px;
+                opacity: 1;
+                outline: 0;
+                height: 35px;
+                font-size: 8pt;
+                min-width: 58px;
+                transition: .2s;
+                line-height: 3.2;
+                border-radius: 5px;
+                letter-spacing: .5px;
+                padding: 0rem 0.75rem;
+                border: none;
+                cursor: pointer;
+                font-weight: bold;
+                text-align: center;
+                display: inline-block;
+                text-decoration: none;
+                vertical-align: middle;
+                background-image: unset;
+                text-transform: uppercase;
+                border: 1px solid var(--color_3);
+                color: var(--color_text_2);
+                background-color: var(--color_3);
+            }
+            .but:hover{
+                color: var(--color_3);
+                background-color: var(--color_text_2);
+                border: 1px solid var(--color_3);
+            }
+            .but_dark{
+                color: var(--color_text_2);
+                background-color: var(--color_2);
+                border: 1px solid var(--color_2);
+            }
+            .but_dark:hover{
+                color: var(--color_text_1);
+                background-color: var(--color_text_2);
+                border: 1px solid var(--color_2);
+            }
+            .but_cancel{
+                color: var(--color_text_2);
+                background-color: var(--color_7);
+                border: 1px solid var(--color_7);
+            }
+            .but_cancel:hover{
+                color: var(--color_7);
+                background-color: var(--color_text_2);
+                border: 1px solid transparent;
+            }
+        </style>
+	</head>
+	<body>
+        <div class="section" id="" style="padding: 0px; height: 100vh; width: 100vw; display: flex; background-repeat: no-repeat; background-size: cover; background-position: center; background-image: url('https://cdn.swirf.com/project/img_bg_login_offertepunt.png')">
+            
+            <div class="row" style="width: 100%; gap: 0rem; margin: auto auto;">
+                <div class="col s4 offset-s4" id="" style=""> 
+                    <div style="padding: 0rem 2rem; background-color: white; min-height: 30vh; border-radius: 10px; border: 2px solid var(--color_7);">
+                        <div style="margin: 2rem 0rem;" >
+                            <img class="center-block responsive-img" src="https://cdn.swirf.com/project/img_offertepunt_blue.png" />
+                        </div>
+                        <div style="margin: 2rem 0rem; border-bottom: 2px solid var(--color_7);" ></div>
+                        <div style="margin: 2rem 0rem; padding: 1rem 2rem; background-color: var(--color_2); border-radius: 10px;">
+                            <p class="center white-text" style="margin: unset;" >Hello there! Please enter your email so we can recognize whether you are registered as an account owner or not. If not, don't hesitate to register by entering your email! 😉</p>
+                        </div>
+                        <div style="margin: 2rem 0rem;">
+                            <div style="padding-bottom: 0.375rem; font-size: 10pt; text-align: center;" >
+                                <span>E-mail</span>
+                            </div>
+                            <div>
+                                <input class="browser-default project_field login_field" id="username" style="width: 100%; height: 45px; border-radius: 10px; border: 2px solid #109CD9;" onkeyup=""  placeholder="" type="email" required>
+                            </div>
+                        </div>
+                        <div style="margin: 2rem 0rem;">
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="filled-in" checked="checked" />
+                                    <span>Remember Me</span>
+                                </label>
+                            </p>
+                            <p>
+                                <label>
+                                    <input type="checkbox" class="filled-in" checked="checked" />
+                                    <span>I agree with Offertepunt <a></a>Terms and Conditions</a></span>
+                                </label>
+                            </p>
+                        </div>
+                        <div style="margin: 2rem 0rem; border-bottom: 2px solid var(--color_7);" ></div>
+                        <div class="row" style="margin: 2rem 0rem; gap: 2rem;">
+                            <div class="col s6" >
+                                <a class="but but_cancel" style="width: 100%;" >Cancel</a>
+                            </div>
+                            <div class="col s6" >
+                                <a class="but" style="width: 100%;" >Submit</a>
+                            </div>
+                            
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+		</div>
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.0.3-beta/dist/js/materialize.min.js"></script>
+	</body>
+</html>
