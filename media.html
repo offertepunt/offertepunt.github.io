@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+      integrity="sha512-UJfAaOlIRtdR+0P6C3KUoTDAxVTuy3lnSXLyLKlHYJlcSU8Juge/mjeaxDNMlw9LgeIotgz5FP8eUQPhX1q10A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css"
+      integrity="sha512-t38vG/f94E72wz6pCsuuhcOPJlHKwPy+PY+n1+tJFzdte3hsIgYE7iEpgg/StngunGszVMrRfvwZinrza0vMTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"
+      integrity="sha512-m2PhLxj2N91eYrIGU2cmIu2d0SkaE4A14bCjVb9zykvp6WtsdriFCiXQ/8Hdj0kssUB/Nz0dMBcoLsJkSCto0Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+      integrity="sha512-NiWqa2rceHnN3Z5j6mSAvbwwg3tiwVNxiAQaaSMSXnRRDh5C2mk/+sKQRw8qjV1vN4nf8iK2a0b048PnHbyx+Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <style>
+      body {
+        background-color: #ecf0f1;
+        overflow-y: scroll; /* Memaksa scroll vertikal */
+      }
+
+      .main_box {
+        box-sizing: border-box;
+        position: fixed;
+        width: 1200px;
+        height: 600px;
+        left: 50%; /* Pusat horizontal */
+        top: 50%; /* Pusat vertikal */
+        transform: translate(-50%, -50%); /* Geser ke tengah */
+        background: #ffffff;
+        border: 2px solid rgba(39, 65, 142, 0.2);
+        box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        margin: 70px 0 0 0;
+      }
+
+      .box_img {
+        width: 257px;
+        height: 170px;
+        left: 480px;
+        top: 309px;
+        background: url(.jpg), #d9d9d9;
+        border-radius: 8px;
+        margin: 0 40px 0 40px;
+        text-align: center;
+        /* padding: 0 -20px 0 0; */
+      }
+      .box_row {
+        display: flex;
+        justify-content: space-around; /* Menyusun elemen dengan jarak sedikit lebih dekat */
+        gap: 10px; /* Memberikan sedikit jarak antar elemen */
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav style="margin: 10px 0 0 -125px">
+        <div class="nav-wrapper" style="border: 1px solid black; border-radius: 5px; background-color: #ecf0f1; width: 1200px">
+          <ul id="nav-mobile" class="left">
+            <li><a href="#" class="waves-light white btn-small" style="color: black">Company Info</a></li>
+            <li><a href="#" class="waves-light white btn-small" style="color: black">Working Area's</a></li>
+            <li><a href="#" class="waves-light white btn-small" style="color: black">Opening Times</a></li>
+            <li><a href="#" class="waves-light white btn-small" style="color: black">My Services</a></li>
+            <li><a href="#" class="waves-light white btn-small" style="color: black">Media</a></li>
+            <li><a href="#" class="waves-light white btn-small" style="color: black">My Portfolio</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="main_box">
+        <div class="row">
+          <div class="col s6" style="margin: 30px 0 0 5px">
+            <!-- Kolom kiri -->
+            <h5><strong>Media</strong></h5>
+          </div>
+          <div class="col s6 right-align" style="margin: 50px 0 0 -10px">
+            <!-- Kolom kanan -->
+            <a href="#" class="waves-light black btn-small" style="color: white; border-radius: 3px">Add New Services</a>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col s12 m3" style="width: 20%">
+            <div class="card">
+              <div class="card-image">
+                <img src="https://motigo.com/wp-content/uploads/2023/11/Sound-Engineering-1.jpg" />
+              </div>
+            </div>
+            <p style="text-align: center">10:00 10 September 2023</p>
+          </div>
+
+          <div class="col s12 m3" style="width: 20%">
+            <div class="card">
+              <div class="card-image">
+                <img src="https://motigo.com/wp-content/uploads/2023/09/Tech-Infused-Financial-Future-1140x760.jpg" />
+              </div>
+            </div>
+            <p style="text-align: center">10:00 10 September 2023</p>
+          </div>
+
+          <div class="col s12 m3" style="width: 20%">
+            <div class="card">
+              <div class="card-image">
+                <img src="https://motigo.com/wp-content/uploads/2023/09/Tech-Infused-Financial-Future-1140x760.jpg" />
+              </div>
+            </div>
+            <p style="text-align: center">10:00 10 September 2023</p>
+          </div>
+
+          <div class="col s12 m3" style="width: 20%">
+            <div class="card">
+              <div class="card-image">
+                <img src="https://enduro-mtb.com/wp-content/uploads/2023/09/Alchemy_Arktos_150_2023_Review_END_057_WEB_Res-3832-2-1140x760.jpg" />
+              </div>
+            </div>
+            <p style="text-align: center">10:00 10 September 2023</p>
+          </div>
+
+          <div class="col s12 m3" style="width: 20%">
+            <div class="card">
+              <div class="card-image">
+                <img src="https://www.healthyishandhappy.com/wp-content/uploads/2022/02/FullSizeRender-54-1140x760.jpg" />
+              </div>
+            </div>
+            <p style="text-align: center">10:00 10 September 2023</p>
+          </div>
+
+          <div class="col s12 m3" style="width: 20%">
+            <div class="card">
+              <div class="card-image">
+                <img src="https://www.greenlivingpdx.com/wp-content/uploads/2023/08/pollution-3441119_1280-1140x760.jpg" />
+              </div>
+            </div>
+            <p style="text-align: center">10:00 10 September 2023</p>
+          </div>
+
+          <div class="col s12 m3" style="width: 20%">
+            <div class="card">
+              <div class="card-image">
+                <img src="https://cdn.redstagfulfillment.com/wp-content/uploads/photo-spread-with-colors-1140x760.jpg" />
+              </div>
+            </div>
+            <p style="text-align: center">10:00 10 September 2023</p>
+          </div>
+
+          <div class="col s12 m3" style="width: 20%">
+            <div class="card">
+              <div class="card-image">
+                <img src="https://drevio.b-cdn.net/wp-content/uploads/2022/10/Free-Teen-Titans-Canva-Birthday-Water-Bottle-Labels-FIve-1140x760.jpg" />
+              </div>
+            </div>
+            <p style="text-align: center">10:00 10 September 2023</p>
+          </div>
+
+          <div class="col s12 m3" style="width: 20%">
+            <div class="card">
+              <div class="card-image">
+                <img src="https://alsik.dk/wp-content/uploads/2020/09/SHR_Alsik_Room_BMCSuite_Bed-1140x760.jpg" />
+              </div>
+            </div>
+            <p style="text-align: center">10:00 10 September 2023</p>
+          </div>
+
+          <div class="col s12 m3" style="width: 20%">
+            <div class="card">
+              <div class="card-image">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Madagascan_Fish_Eagle_-_Ankarafantsika_-_Madagascar_%2815111026410%29_%282%29.jpg" />
+              </div>
+            </div>
+            <p style="text-align: center">10:00 10 September 2023</p>
+          </div>
+
+          <div class="col s12 m3" style="width: 20%">
+            <div class="card">
+              <div class="card-image">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Discussing_Creative_Commons_licensing_in_Khmer.jpg/1420px-Discussing_Creative_Commons_licensing_in_Khmer.jpg"
+                />
+              </div>
+            </div>
+            <p style="text-align: center">10:00 10 September 2023</p>
+          </div>
+
+          <div class="col s12 m3" style="width: 20%">
+            <div class="card">
+              <div class="card-image">
+                <img src="https://imgur.com/U3ZQ3VX.png" />
+              </div>
+            </div>
+            <p style="text-align: center">10:00 10 September 2023</p>
+          </div>
+
+          <div class="col s12 m3" style="width: 20%">
+            <div class="card">
+              <div class="card-image">
+                <img src="https://imgur.com/U3ZQ3VX.png" />
+              </div>
+            </div>
+            <p style="text-align: center">10:00 10 September 2023</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
