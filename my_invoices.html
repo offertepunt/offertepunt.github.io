@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.0.3-alpha/dist/css/materialize.min.css" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.0.3-alpha/dist/js/materialize.min.js"></script>
+
+    <style>
+      body {
+        background-color: #ecf0f1;
+        overflow-y: scroll; /* Memaksa scroll vertikal */
+      }
+
+      .main_box {
+        box-sizing: border-box;
+        position: fixed;
+        width: 1200px;
+        height: 600px;
+        left: 50%; /* Pusat horizontal */
+        top: 50%; /* Pusat vertikal */
+        transform: translate(-50%, -50%); /* Geser ke tengah */
+        background: #ffffff;
+        border: 2px solid rgba(39, 65, 142, 0.2);
+        box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        margin: 130px 0 0 0;
+      }
+
+      .box_img {
+        width: 257px;
+        height: 170px;
+        left: 480px;
+        top: 309px;
+        background: url(.jpg), #d9d9d9;
+        border-radius: 8px;
+        margin: 0 40px 0 40px;
+        text-align: center;
+        /* padding: 0 -20px 0 0; */
+      }
+      .box_row {
+        display: flex;
+        justify-content: space-around; /* Menyusun elemen dengan jarak sedikit lebih dekat */
+        gap: 10px; /* Memberikan sedikit jarak antar elemen */
+      }
+
+      th {
+        background-color: #fafafa;
+      }
+      .asc::after {
+        content: ' ▲'; /* Karakter Unicode untuk panah ke atas */
+        position: absolute;
+        right: 5px;
+      }
+      .desc::after {
+        content: ' ▼'; /* Karakter Unicode untuk panah ke bawah */
+        position: absolute;
+        right: 5px;
+      }
+
+      .select-wrapper {
+        border-color: green !important;
+      }
+
+      /* Select */
+      .custom-select {
+        position: relative;
+        width: 130px; /* Atur lebar sesuai kebutuhan */
+        height: 38px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        cursor: pointer;
+        background-color: #43bd74;
+        margin: 25px 0 0 75px;
+      }
+
+      .custom-select-2 {
+        position: relative;
+        width: 80px; /* Atur lebar sesuai kebutuhan */
+        height: 38px;
+        border: 1px solid #43bd74;
+        border-radius: 4px;
+        cursor: pointer;
+        background-color: #ffffff;
+        margin: 25px 0 0 45px;
+        color: #43bd74;
+      }
+
+      .selected {
+        display: block;
+        padding: 10px;
+        align-items: center;
+        /* margin: 0 0 0 0; */
+        line-height: 1; /* Sesuaikan tinggi elemen agar tulisan berada di tengah vertikal */
+        margin: 0;
+      }
+
+      .options {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: none;
+        position: absolute;
+        width: 100%;
+        border: 1px solid #ccc;
+        border-top: none;
+        border-radius: 0 0 4px 4px;
+        background-color: #43bd74;
+      }
+
+      .options li {
+        padding: 10px;
+      }
+
+      .options li:hover {
+        background-color: #f2f2f2;
+      }
+
+      .custom-select.active .options {
+        display: block;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav style="margin: 10px 0 0 -200px">
+        <div class="nav-wrapper" style="border: none; border-radius: 5px; background-color: #fafafa; width: 1347px; height: 100px">
+          <h6 style="color: black; margin: 10px 0 0 75px"><strong>Sort By</strong></h6>
+          <div class="row">
+            <div class="custom-select">
+              <span class="selected">Request Date &#9660;</span>
+              <ul class="options">
+                <li>Select option 1</li>
+                <li>Select option 2</li>
+                <li>Select option 3</li>
+                <li>Select option 4</li>
+              </ul>
+            </div>
+            <div class="custom-select-2">
+              <span class="selected">Status &#9660;</span>
+              <ul class="options">
+                <li>Select option 1</li>
+                <li>Select option 2</li>
+                <li>Select option 3</li>
+                <li>Select option 4</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </nav>
+
+      <div class="main_box">
+        <table>
+          <thead>
+            <tr>
+              <th onclick="sortTable(0)" class="sortable">Invoice Number <span style="color: #eaeaea">&#129057;</span> <span style="color: #eaeaea">&#129059;</span></th>
+              <th onclick="sortTable(1)" class="sortable">Due Date <span style="color: #eaeaea">&#129057;</span> <span style="color: #eaeaea">&#129059;</span></th>
+              <th onclick="sortTable(2)" class="sortable">Amount <span style="color: #eaeaea">&#129057;</span> <span style="color: #eaeaea">&#129059;</span></th>
+              <th onclick="sortTable(3)" class="sortable">Status<span style="color: #eaeaea">&#129057;</span> <span style="color: #eaeaea">&#129059;</span></th>
+              <th onclick="sortTable(4)" class="sortable"></th>
+            </tr>
+          </thead>
+          <tbody id="data-table-body"></tbody>
+        </table>
+      </div>
+      <script>
+        var data = [
+          {
+            'invoice_number': '123456789',
+            'due_date': '1 January 2022',
+            'amount': '&euro;400',
+            'status': '<span class="new badge" style="background-color:#EDFFF4; color:#4FCE5D">Done</span>',
+            'icon': '<span class="material-symbols-outlined">cloud_download</span>',
+          },
+          {
+            'invoice_number': '123456789',
+            'due_date': '2 Februari 2022',
+            'amount': '&euro;400',
+            'status': '<span class="new badge" style="background-color:#DAF0F9; color:#0E9CD9">Pending</span>',
+            'icon': '<span class="material-symbols-outlined">cloud_download</span>',
+          },
+          {
+            'invoice_number': '123456789',
+            'due_date': '9 September 2022',
+            'amount': '&euro;400',
+            'status': '<span class="new badge" style="background-color:#EDFFF4; color:#4FCE5D">Done</span>',
+            'icon': '<span class="material-symbols-outlined">cloud_download</span>',
+          },
+          {
+            'invoice_number': '123456789',
+            'due_date': '2 Februari 2022',
+            'amount': '&euro;400',
+            'status': '<span class="new badge" style="background-color:#DAF0F9; color:#0E9CD9">Pending</span>',
+            'icon': '<span class="material-symbols-outlined">cloud_download</span>',
+          },
+          {
+            'invoice_number': '123456789',
+            'due_date': '9 September 2022',
+            'amount': '&euro;400',
+            'status': '<span class="new badge" style="background-color:#EDFFF4; color:#4FCE5D">Done</span>',
+            'icon': '<span class="material-symbols-outlined">cloud_download</span>',
+          },
+          {
+            'invoice_number': '123456789',
+            'due_date': '9 September 2022',
+            'amount': '&euro;400',
+            'status': '<span class="new badge" style="background-color:#EDFFF4; color:#4FCE5D">Done</span>',
+            'icon': '<span class="material-symbols-outlined">cloud_download</span>',
+          },
+          {
+            'invoice_number': '123456789',
+            'due_date': '9 September 2022',
+            'amount': '&euro;400',
+            'status': '<span class="new badge" style="background-color:#EDFFF4; color:#4FCE5D">Done</span>',
+            'icon': '<span class="material-symbols-outlined">cloud_download</span>',
+          },
+          {
+            'invoice_number': '123456789',
+            'due_date': '3 March 2022',
+            'amount': '&euro;400',
+            'status': '<span class="new badge" style="background-color:#FFE6E6; color:#E93535">Overdue</span>',
+            'icon': '<span class="material-symbols-outlined">cloud_download</span>',
+          },
+          {
+            'invoice_number': '123456789',
+            'due_date': '9 September 2022',
+            'amount': '&euro;400',
+            'status': '<span class="new badge" style="background-color:#EDFFF4; color:#4FCE5D">Done</span>',
+            'icon': '<span class="material-symbols-outlined">cloud_download</span>',
+          },
+          {
+            'invoice_number': '123456789',
+            'due_date': '3 March 2022',
+            'amount': '&euro;400',
+            'status': '<span class="new badge" style="background-color:#FFE6E6; color:#E93535">Overdue</span>',
+            'icon': '<span class="material-symbols-outlined">cloud_download</span>',
+          },
+          {
+            'invoice_number': '123456789',
+            'due_date': '9 September 2022',
+            'amount': '&euro;400',
+            'status': '<span class="new badge" style="background-color:#EDFFF4; color:#4FCE5D">Done</span>',
+            'icon': '<span class="material-symbols-outlined">cloud_download</span>',
+          },
+          {
+            'invoice_number': '123456789',
+            'due_date': '3 March 2022',
+            'amount': '&euro;400',
+            'status': '<span class="new badge" style="background-color:#FFE6E6; color:#E93535">Overdue</span>',
+            'icon': '<span class="material-symbols-outlined">cloud_download</span>',
+          },
+        ];
+
+        var tableBody = document.getElementById('data-table-body');
+
+        data.forEach(function (item) {
+          var row = document.createElement('tr');
+          row.innerHTML =
+            '<td>' +
+            item.invoice_number +
+            '</td>' +
+            '<td>' +
+            item.due_date +
+            '</td>' +
+            '<td>' +
+            item.amount +
+            '</td>' +
+            '<td>' +
+            item.status +
+            '</td>' +
+            '<td>' +
+            item.icon +
+            '</td>';
+          tableBody.appendChild(row);
+        });
+      </script>
+      <script>
+        function sortTable(colIndex) {
+          var table,
+            rows,
+            switching,
+            i,
+            x,
+            y,
+            shouldSwitch,
+            dir,
+            switchcount = 0;
+          table = document.getElementById('data-table');
+          switching = true;
+          dir = 'asc';
+
+          while (switching) {
+            switching = false;
+            rows = table.rows;
+
+            for (i = 1; i < rows.length - 1; i++) {
+              shouldSwitch = false;
+              x = rows[i].getElementsByTagName('td')[colIndex];
+              y = rows[i + 1].getElementsByTagName('td')[colIndex];
+
+              if (dir === 'asc') {
+                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                  shouldSwitch = true;
+                  break;
+                }
+              } else if (dir === 'desc') {
+                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                  shouldSwitch = true;
+                  break;
+                }
+              }
+            }
+
+            if (shouldSwitch) {
+              rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+              switching = true;
+              switchcount++;
+            } else {
+              if (switchcount === 0 && dir === 'asc') {
+                dir = 'desc';
+                switching = true;
+              }
+            }
+          }
+
+          var headers = document.querySelectorAll('.sortable');
+          headers.forEach(function (header) {
+            header.classList.remove('asc', 'desc');
+          });
+
+          if (dir === 'asc') {
+            headers[colIndex].classList.add('asc');
+          } else {
+            headers[colIndex].classList.add('desc');
+          }
+        }
+      </script>
+      <script>
+        // Inisialisasi komponen Select dari Materialize CSS
+        document.addEventListener('DOMContentLoaded', function () {
+          var elems = document.querySelectorAll('select');
+          var instances = M.FormSelect.init(elems, {});
+        });
+      </script>
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="js/materialize.min.js"></script>
+
+      <script>
+        document.addEventListener('click', function (e) {
+          const select = document.querySelector('.custom-select');
+          if (e.target.closest('.custom-select') !== select) {
+            select.classList.remove('active');
+          } else {
+            select.classList.toggle('active');
+          }
+        });
+      </script>
+    </div>
+  </body>
+</html>
