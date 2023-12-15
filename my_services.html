@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"
+      integrity="sha512-UJfAaOlIRtdR+0P6C3KUoTDAxVTuy3lnSXLyLKlHYJlcSU8Juge/mjeaxDNMlw9LgeIotgz5FP8eUQPhX1q10A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.css"
+      integrity="sha512-t38vG/f94E72wz6pCsuuhcOPJlHKwPy+PY+n1+tJFzdte3hsIgYE7iEpgg/StngunGszVMrRfvwZinrza0vMTA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"
+      integrity="sha512-m2PhLxj2N91eYrIGU2cmIu2d0SkaE4A14bCjVb9zykvp6WtsdriFCiXQ/8Hdj0kssUB/Nz0dMBcoLsJkSCto0Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"
+      integrity="sha512-NiWqa2rceHnN3Z5j6mSAvbwwg3tiwVNxiAQaaSMSXnRRDh5C2mk/+sKQRw8qjV1vN4nf8iK2a0b048PnHbyx+Q=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+
+    <style>
+      body {
+        background-color: #ecf0f1;
+        overflow-y: scroll; /* Memaksa scroll vertikal */
+      }
+
+      .main_box {
+        box-sizing: border-box;
+        position: fixed;
+        width: 1200px;
+        height: 600px;
+        left: 50%; /* Pusat horizontal */
+        top: 50%; /* Pusat vertikal */
+        transform: translate(-50%, -50%); /* Geser ke tengah */
+        background: #ffffff;
+        border: 2px solid rgba(39, 65, 142, 0.2);
+        box-shadow: -2px 2px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        margin: 70px 0 0 0;
+      }
+
+      .box_group {
+        box-sizing: border-box;
+        position: absolute;
+        width: 1120px;
+        height: 260px;
+        top: 50%; /* Menempatkan elemen di tengah vertikal */
+        left: 50%; /* Menempatkan elemen di tengah horizontal */
+        transform: translate(-50%, -50%); /* Menggeser elemen ke tengah */
+        background: #ffffff;
+        border: 2px solid rgba(6, 11, 87, 0.2);
+        box-shadow: 4px 4px 10px 2px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        margin: -70px 0 0 0;
+      }
+
+      .box_group_below {
+        position: absolute;
+        top: calc(50% + 130px); /* Menggeser elemen ke bawah */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1120px;
+        height: 260px;
+        background-color: #ffffff;; /* Warna latar belakang sesuai kebutuhan */
+        border: 2px solid rgba(6, 11, 87, 0.2);
+        box-shadow: 4px 4px 10px 2px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        margin: -50px 0 0 0;
+      }
+
+      .box_group_below {
+        position: absolute;
+        top: calc(50% + 130px); /* Menggeser elemen ke bawah */
+        left: 50%;
+        transform: translateX(-50%);
+        width: 1120px;
+        height: 260px;
+        background-color: #ffffff;; /* Warna latar belakang sesuai kebutuhan */
+        border: 2px solid rgba(6, 11, 87, 0.2);
+        box-shadow: 4px 4px 10px 2px rgba(0, 0, 0, 0.1);
+        border-radius: 20px;
+        margin: -50px 0 0 0;
+      }
+
+      .img_box {
+        box-sizing: border-box;
+        /* position: absolute; */
+        width: 230px;
+        height: 230px;
+        left: 500px;
+        top: 340px;
+        background: url('https://imgur.com/U3ZQ3VX.png');
+        border: 2px solid rgba(6, 11, 87, 0.2);
+        border-radius: 20px;
+        margin: 12px 0 0 12px;
+        background-size: cover; /* Menyesuaikan gambar latar belakang dengan ukuran elemen */
+        background-repeat: no-repeat; /* Menghindari pengulangan gambar */
+      }
+
+      .price {
+        position: absolute;
+        width: 110px;
+        height: 25px;
+        left: 270px;
+        top: 70px;
+        font-family: 'Nunito';
+        font-style: normal;
+        font-weight: 700;
+        font-size: 13px;
+        line-height: 25px;
+        /* identical to box height */
+        letter-spacing: 0.02em;
+        color: #8a8a8a;
+      }
+      .rounded{
+        width: 160px;
+        height: 30px;
+        background-color: yellow;
+        border-radius: 4px;
+        text-align: center;
+      }
+    </style>
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container" >
+      <nav style="margin: 10px 0 0 -125px">
+        <div class="nav-wrapper" style="border: 1px solid black; border-radius: 5px; background-color: #ecf0f1; width: 1200px;">
+          <ul id="nav-mobile" class="left">
+            <li><a href="#" class="waves-light white btn-small" style="color: black">Company Info</a></li>
+            <li><a href="#" class="waves-light white btn-small" style="color: black">Working Area's</a></li>
+            <li><a href="#" class="waves-light white btn-small" style="color: black">Opening Times</a></li>
+            <li><a href="#" class="waves-light white btn-small" style="color: black">My Services</a></li>
+            <li><a href="#" class="waves-light white btn-small" style="color: black">Media</a></li>
+            <li><a href="#" class="waves-light white btn-small" style="color: black">My Portfolio</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="main_box">
+        <div class="row">
+          <div class="col s6" style="margin: 30px 0 0 30px">
+            <!-- Kolom kiri -->
+            <h5><strong>My Services</strong></h5>
+          </div>
+          <div class="col s6 right-align" style="margin: 50px 0 0 -60px">
+            <!-- Kolom kanan -->
+            <a href="#" class="waves-light black btn-small" style="color: white; border-radius: 3px">Add Services</a>
+          </div>
+        </div>
+
+        <div class="box_group">
+          <div class="row">
+            <div class="price" style="margin: -65px 0 0 0;">
+              <p>Service Name <br/> 
+              <h6>Renovation</h6></p>
+            </div>
+            <div class="price" style="margin: -65px 0 0 200px; width: 50%;">
+              <div class="rounded">
+                <p>Category <strong>Construction</strong></p>
+              </div>
+            </div>
+            <div class="price" style="margin: -65px 0 0 580px;">
+              <div class="switch">
+                <label>
+                  Active
+                  <input type="checkbox">
+                  <span class="lever"></span>
+                </label>
+              </div>
+            </div>
+            <div class="price" style="margin: -65px 0 0 700px;">
+              <a class="waves-effect grey  btn-small" style="color: black;">Edit <span class="material-symbols-outlined">
+                edit_square
+                </span></a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="img_box"></div>
+            <div class="price">
+              <p>Total Transaction<br />21</p>
+            </div>
+            <div class="price" style="margin: 0 0 0 200px">
+              <p>Price<br />&euro; 50 - 2000</p>
+            </div>
+            <div class="price" style="margin: 0 0 0 400px">
+              <p>Ratings<br />4.7 &starf;</p>
+            </div>
+            <div class="price" style="margin: 0 0 0 600px; width: 20%">
+              <p>Tags<br />Renovation, Construction, Home Service, Fast, Cheap</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="price" style="margin: 80px 0 0 0; width: 70%">
+              <p>
+                Description <br />orem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tristique, libero at rhoncus tincidunt, augue justo iaculis nunc, at
+                porta tellus nibh nec massa.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="box_group_below">
+          <div class="row">
+            <div class="price" style="margin: -65px 0 0 0;">
+              <p>Service Name <br/> 
+              <h6>Renovation</h6></p>
+            </div>
+            <div class="price" style="margin: -65px 0 0 200px; width: 50%;">
+              <div class="rounded">
+                <p>Category <strong>Construction</strong></p>
+              </div>
+            </div>
+            <div class="price" style="margin: -65px 0 0 580px;">
+              <div class="switch">
+                <label>
+                  Active
+                  <input type="checkbox">
+                  <span class="lever"></span>
+                </label>
+              </div>
+            </div>
+            <div class="price" style="margin: -65px 0 0 700px;">
+              <a class="waves-effect grey  btn-small" style="color: black;">Edit <span class="material-symbols-outlined">
+                edit_square
+                </span></a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="img_box"></div>
+            <div class="price">
+              <p>Total Transaction<br />21</p>
+            </div>
+            <div class="price" style="margin: 0 0 0 200px">
+              <p>Price<br />&euro; 50 - 2000</p>
+            </div>
+            <div class="price" style="margin: 0 0 0 400px">
+              <p>Ratings<br />4.7 &starf;</p>
+            </div>
+            <div class="price" style="margin: 0 0 0 600px; width: 20%">
+              <p>Tags<br />Renovation, Construction, Home Service, Fast, Cheap</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="price" style="margin: 80px 0 0 0; width: 70%">
+              <p>
+                Description <br />orem ipsum dolor sit amet, consectetur adipiscing elit. Quisque tristique, libero at rhoncus tincidunt, augue justo iaculis nunc, at
+                porta tellus nibh nec massa.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
