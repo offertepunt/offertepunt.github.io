@@ -258,6 +258,30 @@
               .sidebar-menu li a:hover {
                 background-color: #555;
               }
+
+              /* CSS untuk tampilan saran pencarian */
+              .suggestions {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                border: 1px solid #ccc;
+                display: none;
+                width: 52vw;
+                background-color: #FFFFFF;
+                border-radius: 6px;
+              }
+
+              .suggestions li {
+                padding: 8px;
+                cursor: pointer;
+                border: 0.2px solid #797B99;
+              }
+
+              .suggestions li:hover {
+                background-color: #f0f0f0;
+              }
+
+              
         </style>
 	</head>
 	<body>
@@ -302,8 +326,11 @@
                 <div class="text_box_2">
                     <div class="search-box" style="position: relative;">
                       <i class="fas fa-search" style="position: absolute;   padding: 15px 0 0 15px; font-size: x-large; color: #cdd0d3;"></i>
-                        <input type="text" placeholder="Search" style="text-indent: 40px;">
-                    </div>                    
+                        <input type="text" id="searchInput" placeholder="Search" style="text-indent: 40px;">
+                    </div>                                        
+                </div>
+                <div class="text_box_2">
+                  <ul class="suggestions" id="suggestionList"></ul>
                 </div>
 
 
@@ -424,6 +451,55 @@
           });
         });
       });
+    </script>
+    <script>
+      const searchInput = document.getElementById('searchInput');
+const suggestionList = document.getElementById('suggestionList');
+const noResults = document.createElement('li');
+noResults.textContent = "Can't find the answer! Try to contact our support.";
+noResults.classList.add('no-results');
+
+// Contoh daftar saran pencarian
+const suggestions = ['Lorem ipsum dolor sit amet, consectetur adipiscing elit.', 
+                    'Aliquam gravida odio non varius aliquam.', 
+                    'Etiam tempus dui ut fringilla mattis.', 
+                    'Integer suscipit, erat in volutpat dictum, mi velit blandit elit, at lacinia elit nunc id felis.', 
+                    'Nullam elit enim, consectetur et ex sodales, ornare dapibus felis. Ut lobortis lacus a sem porttitor, sit amet porttitor lorem fringilla.'
+                    ];
+
+// Fungsi untuk menampilkan saran pencarian
+function showSuggestions() {
+  const userInput = searchInput.value.toLowerCase();
+  const filteredSuggestions = suggestions.filter(suggestion =>
+    suggestion.toLowerCase().startsWith(userInput)
+  );
+
+  suggestionList.innerHTML = '';
+  filteredSuggestions.forEach(suggestion => {
+    const li = document.createElement('li');
+    li.textContent = suggestion;
+    li.addEventListener('click', () => {
+      searchInput.value = suggestion;
+      suggestionList.style.display = 'none';
+    });
+    suggestionList.appendChild(li);
+  });
+
+  suggestionList.appendChild(noResults);
+
+  if (filteredSuggestions.length > 0) {
+    suggestionList.style.display = 'block';
+    noResults.classList.remove('show-no-results');
+  } else {
+    suggestionList.style.display = 'none';
+    noResults.classList.add('show-no-results');
+  }
+}
+
+// Event listener untuk input pada kotak pencarian
+searchInput.addEventListener('input', showSuggestions);
+
+
     </script>
         
 	</body>
