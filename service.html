@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+		<title>Offertepunt Admin Panel</title>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+		<link href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.0.3-beta/dist/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <style>
+            :root {
+                --color_2: #060B57; 
+                --color_3: #109CD9;
+                --color_4: #D4D9E8;
+                --color_5: #AAAAAA;
+                --color_7: #CDCEDD; 
+                --color_flow: #4FCE5D;
+                --color_alert: #E93535;
+                --color_accent_fb: #EC771A;
+                --color_text_1: #000000;
+                --color_text_2: #FFFFFF;
+                --color_cancel: #ECF1F5;
+            }
+            [type=checkbox].filled-in:checked+span:not(.lever):before{
+                top: 3px;
+            }
+            [type=checkbox].filled-in:checked+span:not(.lever):after{
+                top: 3px;
+                border-radius: 5px;
+                background-color: var(--color_3);
+                border: 2px solid var(--color_3);
+            }
+            .but{
+                margin: 0px;
+                opacity: 1;
+                outline: 0;
+                height: 35px;
+                font-size: 8pt;
+                min-width: 58px;
+                transition: .2s;
+                line-height: 3.2;
+                border-radius: 5px;
+                letter-spacing: .5px;
+                padding: 0rem 0.75rem;
+                border: none;
+                cursor: pointer;
+                font-weight: bold;
+                text-align: center;
+                display: inline-block;
+                text-decoration: none;
+                vertical-align: middle;
+                background-image: unset;
+                text-transform: uppercase;
+                border: 1px solid var(--color_3);
+                color: var(--color_text_2);
+                background-color: var(--color_3);
+            }
+            .but:hover{
+                color: var(--color_3);
+                background-color: var(--color_text_2);
+                border: 1px solid var(--color_3);
+            }
+            .but_dark{
+                color: var(--color_text_2);
+                background-color: var(--color_2);
+                border: 1px solid var(--color_2);
+            }
+            .but_dark:hover{
+                color: var(--color_text_1);
+                background-color: var(--color_text_2);
+                border: 1px solid var(--color_2);
+            }
+            .but_cancel{
+                color: var(--color_text_2);
+                background-color: var(--color_7);
+                border: 1px solid var(--color_7);
+            }
+            .but_cancel:hover{
+                color: var(--color_7);
+                background-color: var(--color_text_2);
+                border: 1px solid transparent;
+            }
+            .valign_wrapper_center{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .valign_wrapper_right{
+                display: flex;
+                align-items: center;
+                justify-content: right;
+            }
+            .a_white{
+                color: white;
+                cursor: pointer;
+            }
+            .a_flow{
+                color: var(--color_flow);
+                cursor: pointer;
+            }
+            :is(.a_white:hover, .a_flow:hover){
+                color: var(--color_3);
+            }
+        </style>
+
+        <style>
+            #menu_cube{
+                top: 4.6rem; 
+                left: 0px; 
+                width: 15vw; 
+                font-size: 8pt; 
+                position: fixed; 
+                z-index: 10000;
+                border-radius: 0px 0px 5px 0px;
+                background-color: var(--color_2);
+                padding: 0rem 1rem;
+            }
+            div span.ea_menu{
+                color: var(--color_text_2);
+            }
+            .menu_item{
+                cursor: pointer;
+                font-size: 11pt;
+                margin: 0px;
+                padding: 0px;
+                height: 50px;
+            }
+        </style>
+
+        <style>
+            /* New css style */
+            .title{
+                width: 20vw;
+                /* border: 1px solid black; */
+                margin: 40px 0 0 30px;
+            }
+
+            .cover {
+                width: 25px; 
+                height: 25px; 
+                border-radius: 10%; 
+                background-color: #17BBFF; 
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .cover i {
+                color: #fff; 
+            }
+
+            .text{
+                width: 200px;
+                margin: -15px 0 0 4px;
+                /* border: 1px solid black; */
+            }
+
+            .card {
+                /* Tambahkan gaya sesuai kebutuhan kartu Anda */
+                width: 428px;
+                border: 1px solid #ccc;
+                padding: 20px;
+                margin: 20px;
+                border-radius: 10px; /* Tambahkan border-radius sesuai kebutuhan */
+                overflow: hidden;
+            }
+
+            .card img {
+                border-radius: 5px; /* Membuat gambar bundar */
+                width: 100%;
+                display: block;
+                margin: 0 auto;
+            }
+
+                        .card-title {
+                margin-right: auto; /* Untuk mendorong elemen ke kiri */
+            }
+
+            .square {
+                width: 30px; /* Sesuaikan ukuran elemen square */
+                height: 30px; /* Sesuaikan ukuran elemen square */
+                border-radius: 5px; /* Sesuaikan border-radius sesuai kebutuhan */
+                background-color: #ccc; /* Warna latar belakang sesuai kebutuhan */
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: 10px; /* Sesuaikan margin sesuai kebutuhan */
+            }
+
+            .square i {
+                color: #fff; /* Warna ikon sesuai kebutuhan */
+            }
+
+            .photo {
+                width: 40px; /* Sesuaikan ukuran elemen square */
+                height: 30px; /* Sesuaikan ukuran elemen square */
+                border-radius: 5px; /* Sesuaikan border-radius sesuai kebutuhan */
+                background-color: rgba(16,17,75, 0.7); 
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin-left: 10px; /* Sesuaikan margin sesuai kebutuhan */
+                position: absolute;
+            }
+
+            .photo i {
+                color: #fff; /* Warna ikon sesuai kebutuhan */
+            }
+        </style>
+	</head>
+	<body>
+        <div class="section" id="" style="padding: 0px; height: 100vh; width: 100vw;">
+            
+            <div class="row" id="navbar_cube" style=" height: 4.5rem;">
+                <div class="col s12" style="background-color: var(--color_2); box-shadow: rgb(0 0 0 / 27%) 0px 2px 3px 2px">
+                    <div class="row" style="">
+                        <div class="col s3" style="">
+                            <div class="row" style="">
+                                <div class="col s2" style="height: 4.5rem;">
+                                    <div class="valign_wrapper_center" style="height: 4.5rem;" >
+                                        <a class="a_white" style="font-size: 18pt;" onclick='$(`#menu_cube`).toggle()' ><i class="fa-solid fa-layer-group"></i></a>
+                                    </div>
+                                </div>
+                                <div class="col s10" style="padding: 1rem 0rem;">
+                                    <div class="valign-wrapper" style="height: 2.5rem; padding-left: 1.5rem; border-left: 1px solid var(--color_text_2);" >
+                                        <img class="responsive-img" src="https://cdn.swirf.com/project/img_offertepunt_white.png" style="max-width: 12rem; max-height: 1.875rem; cursor: pointer;" onClick="window.location.reload()">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s8 valign-wrapper" style="height: 4.5rem; padding-left: 1.8rem;">
+                        </div>
+                        <div class="col s1 valign_wrapper_right" style="text-align: right; border-radius: 5px; height: 65px; padding-right: 1.5rem; color: white;"> 
+                            <img class="responsive-img circle" onclick='$(`#menu_ea_account`).toggle()' src="https://cdn.swirf.com/project/noimagefound.jpg"  id="profile_status" title="member: Erwin" style="cursor: pointer; height: 3rem; width: 3rem; display: inline-block; border: 3px solid white;">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        
+            <div class="project_desktop" id="desktop_cube" style="float: left; width: 100vw; height: calc( 100vh - 4.5rem); overflow-x: hidden; overflow-y: auto; background-color: var(--color_cancel);" >
+                <!-- Content -->
+                <div class="title">
+                    <div class="row">
+                        <div class="cover">
+                            <i class="fa-solid fa-thumbs-up"></i>
+                        </div>
+                        <div class="text">
+                            <strong><p style="font-size: large;">Featured Service</p></strong>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin: 0 0 0 25px;">
+                    <div class="card">
+                        <div class="card-content">
+                        <div class="row" style="display: flex; align-items: center;">                        
+                          <span class="card-title">Example Service 1</span>
+                          <div class="square" style="background-color:#17BBFF;">
+                             <i class="fa-solid fa-thumbs-up"></i>
+                          </div>
+                          <div class="square" style="background-color: #FFC100;">
+                            <i class="fa-solid fa-star" style="color: #f9f8f6;"></i>
+                         </div>
+                         <div class="square" style="background-color: #4FCE5D;">
+                            <i class="fa-solid fa-thumbs-up"></i>
+                         </div>
+                        </div>
+                          <img src="https://img.freepik.com/free-photo/people-with-crossed-arms-medium-shot_23-2149008948.jpg?size=626&ext=jpg&ga=GA1.1.1412446893.1705104000&semt=ais" style=" position: relative;
+                          display: inline-block;" alt="Your Image Description">
+                          <div class="photo" style="margin: -50px 0 0 290px; ">
+                            <i class="fa-regular fa-image" style="color: #f4f5f5;"></i> <p style="color: #FFFFFF; padding-left: 2px;">5</p>
+                          </div>
+                          <p style="margin-top: 2px;"><span>&#x1F1F3;&#x1F1F1;</span>
+                             Example Address 88, 123456, Amsterdam</p>
+                        </div>
+                        <div class="card-action">
+                          <div class="row" style="display: flex; justify-content: space-between;">
+                            <div style="margin: 10px 0 0 0;">  
+                                <p><i class="fa-solid fa-star" style="color: #FFD43B;"></i> 5/5 (111)</p>
+                            </div>
+                            <div>                                
+                                <button class="btn icon-right waves-effect waves-light" style="margin: 10px 0 0 0; background-color: #109CD9;" type="submit" name="action">
+                                    View Details
+                                </button>  
+                            </div>
+                          </div>
+                        </div>                        
+                    </div>
+
+                    <div class="card">
+                        <div class="card-content">
+                        <div class="row" style="display: flex; align-items: center;">                        
+                          <span class="card-title">Example Service 2</span>
+                          <div class="square" style="background-color:#17BBFF;">
+                             <i class="fa-solid fa-thumbs-up"></i>
+                          </div>
+                          <div class="square" style="background-color: #FFC100;">
+                            <i class="fa-solid fa-star" style="color: #f9f8f6;"></i>
+                         </div>
+                         <!-- <div class="square" style="background-color: #4FCE5D;">
+                            <i class="fa-solid fa-thumbs-up"></i>
+                         </div> -->
+                        </div>
+                          <img src="https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/jawapos/2022/04/nasal-spray-Science-Times.jpg" style=" position: relative;
+                          display: inline-block;" alt="Your Image Description">
+                          <div class="photo" style="margin: -50px 0 0 290px; ">
+                            <i class="fa-regular fa-image" style="color: #f4f5f5;"></i> <p style="color: #FFFFFF; padding-left: 2px;">5</p>
+                          </div>
+                          <p style="margin-top: 4px;"><span>&#x1F1F3;&#x1F1F1;</span>
+                             Example Address 88, 123456, Amsterdam</p>
+                        </div>
+                        <div class="card-action">
+                          <div class="row" style="display: flex; justify-content: space-between;">
+                            <div style="margin: 10px 0 0 0;">  
+                                <p><i class="fa-solid fa-star" style="color: #FFD43B;"></i> 4.9/5 (111)</p>
+                            </div>
+                            <div>                                
+                                <button class="btn icon-right waves-effect waves-light" style="margin: 10px 0 0 0; background-color: #109CD9;" type="submit" name="action">
+                                    View Details
+                                </button>  
+                            </div>
+                          </div>
+                        </div>                        
+                    </div>
+
+                    <div class="card">
+                        <div class="card-content">
+                        <div class="row" style="display: flex; align-items: center;">                        
+                          <span class="card-title">Example Service 3</span>
+                          <div class="square" style="background-color:#17BBFF;">
+                             <i class="fa-solid fa-thumbs-up"></i>
+                          </div>
+                          <!-- <div class="square" style="background-color: #FFC100;">
+                            <i class="fa-solid fa-star" style="color: #f9f8f6;"></i>
+                         </div> -->
+                         <div class="square" style="background-color: #4FCE5D;">
+                            <i class="fa-solid fa-thumbs-up"></i>
+                         </div>
+                        </div>
+                          <img src="https://media.istockphoto.com/id/1220326710/es/foto/desinfectante-spray-puerta-de-mango-limpio-proteger-las-bacterias-virus-corona-2019.jpg?s=612x612&w=0&k=20&c=ysTqaZJhJKmysQ08zJA5Woo-zfCYk7o5Lv4353LCVBM=" style=" position: relative;
+                          display: inline-block;" alt="Your Image Description">
+                          <div class="photo" style="margin: -50px 0 0 290px; ">
+                            <i class="fa-regular fa-image" style="color: #f4f5f5;"></i> <p style="color: #FFFFFF; padding-left: 2px;">5</p>
+                          </div>
+                          <p style="margin-top: 4px;"><span>&#x1F1F3;&#x1F1F1;</span>
+                             Example Address 88, 123456, Amsterdam</p>
+                        </div>
+                        <div class="card-action">
+                          <div class="row" style="display: flex; justify-content: space-between;">
+                            <div style="margin: 10px 0 0 0;">  
+                                <p><i class="fa-solid fa-star" style="color: #FFD43B;"></i> 4.8/5 (111)</p>
+                            </div>
+                            <div>                                
+                                <button class="btn icon-right waves-effect waves-light" style="margin: 10px 0 0 0; background-color: #109CD9;" type="submit" name="action">
+                                    View Details
+                                </button>  
+                            </div>
+                          </div>
+                        </div>                        
+                    </div>
+
+                    <div class="card">
+                        <div class="card-content">
+                        <div class="row" style="display: flex; align-items: center;">                        
+                          <span class="card-title">Example Service 4</span>
+                          <div class="square" style="background-color:#17BBFF;">
+                             <i class="fa-solid fa-thumbs-up"></i>
+                          </div>
+                          <!-- <div class="square" style="background-color: #FFC100;">
+                            <i class="fa-solid fa-star" style="color: #f9f8f6;"></i>
+                         </div> -->
+                         <!-- <div class="square" style="background-color: #4FCE5D;">
+                            <i class="fa-solid fa-thumbs-up"></i>
+                         </div> -->
+                        </div>
+                          <img src="https://d19d5sz0wkl0lu.cloudfront.net/dims4/default/b2928d2/2147483647/resize/800x%3E/quality/90/?url=https%3A%2F%2Fatd-brightspot.s3.amazonaws.com%2F7f%2F38%2Fb37d0d6148e48fea8f76209eb3bb%2Fbigstock-pretty-teacher-smiling-at-came-69887626-1.jpg" style=" position: relative;
+                          display: inline-block;" alt="Your Image Description">
+                          <div class="photo" style="margin: -50px 0 0 290px; ">
+                            <i class="fa-regular fa-image" style="color: #f4f5f5;"></i> <p style="color: #FFFFFF; padding-left: 2px;">5</p>
+                          </div>
+                          <p style="margin-top: 4px;"><span>&#x1F1F3;&#x1F1F1;</span>
+                             Example Address 88, 123456, Amsterdam</p>
+                        </div>
+                        <div class="card-action">
+                          <div class="row" style="display: flex; justify-content: space-between;">
+                            <div style="margin: 10px 0 0 0;">  
+                                <p><i class="fa-solid fa-star" style="color: #FFD43B;"></i> 4.7/5 (111)</p>
+                            </div>
+                            <div>                                
+                                <button class="btn icon-right waves-effect waves-light" style="margin: 10px 0 0 0; background-color: #109CD9;" type="submit" name="action">
+                                    View Details
+                                </button>  
+                            </div>
+                          </div>
+                        </div>                        
+                    </div>
+                </div>
+
+                <div class="title">
+                    <div class="row">
+                        <div class="cover" style="background-color: #FFC100;">
+                            <i class="fa-solid fa-star" style="color: #f9f8f6;"></i>
+                        </div>
+                        <div class="text">
+                            <strong><p style="font-size: large;">Best Rating Services</p></strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin: 0 0 0 25px;">
+                    <div class="card">
+                        <div class="card-content">
+                        <div class="row" style="display: flex; align-items: center;">                        
+                          <span class="card-title">Example Service 5</span>
+                          <div class="square" style="background-color:#17BBFF;">
+                             <i class="fa-solid fa-thumbs-up"></i>
+                          </div>
+                          <div class="square" style="background-color: #FFC100;">
+                            <i class="fa-solid fa-star" style="color: #f9f8f6;"></i>
+                         </div>
+                         <div class="square" style="background-color: #4FCE5D;">
+                            <i class="fa-solid fa-thumbs-up"></i>
+                         </div>
+                        </div>
+                          <img src="https://runsystem.id/wp-content/uploads/2022/04/young-woman-working-office-with-laptop-headphones-white-wall-customer-service-call-center-e1649995706994.jpg" style=" position: relative;
+                          display: inline-block;" alt="Your Image Description">
+                          <div class="photo" style="margin: -50px 0 0 290px; ">
+                            <i class="fa-regular fa-image" style="color: #f4f5f5;"></i> <p style="color: #FFFFFF; padding-left: 2px;">5</p>
+                          </div>
+                          <p style="margin-top: 4px;"><span>&#x1F1F3;&#x1F1F1;</span>
+                             Example Address 88, 123456, Amsterdam</p>
+                        </div>
+                        <div class="card-action">
+                          <div class="row" style="display: flex; justify-content: space-between;">
+                            <div style="margin: 10px 0 0 0;">  
+                                <p><i class="fa-solid fa-star" style="color: #FFD43B;"></i> 5/5 (111)</p>
+                            </div>
+                            <div>                                
+                                <button class="btn icon-right waves-effect waves-light" style="margin: 10px 0 0 0; background-color: #109CD9;" type="submit" name="action">
+                                    View Details
+                                </button>  
+                            </div>
+                          </div>
+                        </div>                        
+                    </div>
+
+                    <div class="card">
+                        <div class="card-content">
+                        <div class="row" style="display: flex; align-items: center;">                        
+                          <span class="card-title">Example Service 6</span>
+                          <!-- <div class="square" style="background-color:#17BBFF;">
+                             <i class="fa-solid fa-thumbs-up"></i>
+                          </div> -->
+                          <div class="square" style="background-color: #FFC100;">
+                            <i class="fa-solid fa-star" style="color: #f9f8f6;"></i>
+                         </div>
+                         <div class="square" style="background-color: #4FCE5D;">
+                            <i class="fa-solid fa-thumbs-up"></i>
+                         </div>
+                        </div>
+                          <img src="https://thepfsa.co.uk/wp-content/uploads/2022/07/Football-Coach.jpg" style=" position: relative;
+                          display: inline-block;" alt="Your Image Description">
+                           <div class="photo" style="margin: -50px 0 0 290px; ">
+                            <i class="fa-regular fa-image" style="color: #f4f5f5;"></i> <p style="color: #FFFFFF; padding-left: 2px;">5</p>
+                          </div>
+                          <div class=""></div>
+                          <p style="margin-top: 4px;"><span>&#x1F1F3;&#x1F1F1;</span>
+                             Example Address 88, 123456, Amsterdam</p>
+                        </div>
+                        <div class="card-action">
+                          <div class="row" style="display: flex; justify-content: space-between;">
+                            <div style="margin: 10px 0 0 0;">  
+                                <p><i class="fa-solid fa-star" style="color: #FFD43B;"></i> 5/5 (111)</p>
+                            </div>
+                            <div>                                
+                                <button class="btn icon-right waves-effect waves-light" style="margin: 10px 0 0 0; background-color: #109CD9;" type="submit" name="action">
+                                    View Details
+                                </button>  
+                            </div>
+                          </div>
+                        </div>                        
+                    </div>
+
+                    <div class="card">
+                        <div class="card-content">
+                        <div class="row" style="display: flex; align-items: center;">                        
+                          <span class="card-title">Example Service 7</span>
+                          <!-- <div class="square" style="background-color:#17BBFF;">
+                             <i class="fa-solid fa-thumbs-up"></i>
+                          </div> -->
+                          <div class="square" style="background-color: #FFC100;">
+                            <i class="fa-solid fa-star" style="color: #f9f8f6;"></i>
+                         </div>
+                         <div class="square" style="background-color: #4FCE5D;">
+                            <i class="fa-solid fa-thumbs-up"></i>
+                         </div>
+                        </div>
+                          <img src="https://png.pngtree.com/thumb_back/fw800/background/20220209/pngtree-waitress-taking-order-on-a-notebook-waitress-restaurant-retail-photo-image_29220168.jpg" style=" position: relative;
+                          display: inline-block;" alt="Your Image Description">
+                          <div class="photo" style="margin: -50px 0 0 290px; ">
+                            <i class="fa-regular fa-image" style="color: #f4f5f5;"></i> <p style="color: #FFFFFF; padding-left: 2px;">5</p>
+                          </div>
+                          <p style="margin-top: 4px;"><span>&#x1F1F3;&#x1F1F1;</span>
+                             Example Address 88, 123456, Amsterdam</p>
+                        </div>
+                        <div class="card-action">
+                          <div class="row" style="display: flex; justify-content: space-between;">
+                            <div style="margin: 10px 0 0 0;">  
+                                <p><i class="fa-solid fa-star" style="color: #FFD43B;"></i> 5/5 (111)</p>
+                            </div>
+                            <div>                                
+                                <button class="btn icon-right waves-effect waves-light" style="margin: 10px 0 0 0; background-color: #109CD9;" type="submit" name="action">
+                                    View Details
+                                </button>  
+                            </div>
+                          </div>
+                        </div>                        
+                    </div>
+
+                    <div class="card">
+                        <div class="card-content">
+                        <div class="row" style="display: flex; align-items: center;">                        
+                          <span class="card-title">Example Service 8</span>
+                          <!-- <div class="square" style="background-color:#17BBFF;">
+                             <i class="fa-solid fa-thumbs-up"></i>
+                          </div> -->
+                          <div class="square" style="background-color: #FFC100;">
+                            <i class="fa-solid fa-star" style="color: #f9f8f6;"></i>
+                         </div>
+                         <!-- <div class="square" style="background-color: #4FCE5D;">
+                            <i class="fa-solid fa-thumbs-up"></i>
+                         </div> -->
+                        </div>
+                          <img src="https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/2023/05/03/7-Tips-Sehat-untuk-Karyawan-Kantor-yang-Sering-Duduk-dan-Menatap-Layar-Agar-Tetap-Fit-di-Tengah-Kesibukan-1950951080.jpg" style=" position: relative;
+                          display: inline-block;" alt="Your Image Description">
+                          <div class="photo" style="margin: -50px 0 0 290px; ">
+                            <i class="fa-regular fa-image" style="color: #f4f5f5;"></i> <p style="color: #FFFFFF; padding-left: 2px;">5</p>
+                          </div>
+                          <p style="margin-top: 4px;"><span>&#x1F1F3;&#x1F1F1;</span>
+                             Example Address 88, 123456, Amsterdam</p>
+                        </div>
+                        <div class="card-action">
+                          <div class="row" style="display: flex; justify-content: space-between;">
+                            <div style="margin: 10px 0 0 0;">  
+                                <p><i class="fa-solid fa-star" style="color: #FFD43B;"></i> 5/5 (111)</p>
+                            </div>
+                            <div>                                
+                                <button class="btn icon-right waves-effect waves-light" style="margin: 10px 0 0 0; background-color: #109CD9;" type="submit" name="action">
+                                    View Details
+                                </button>  
+                            </div>
+                          </div>
+                        </div>                        
+                    </div>
+                </div>
+
+                <div class="title">
+                    <div class="row">
+                        <div class="cover" style="background-color: #4FCE5D;">
+                            <i class="fa-solid fa-star" style="color: #f9f8f6;"></i>
+                        </div>
+                        <div class="text">
+                            <strong><p style="font-size: large;">Most Selected Services</p></strong>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin: 0 0 0 25px;">
+                    <div class="card">
+                        <div class="card-content">
+                        <div class="row" style="display: flex; align-items: center;">                        
+                          <span class="card-title">Example Service 9</span>
+                          <div class="square" style="background-color:#17BBFF;">
+                             <i class="fa-solid fa-thumbs-up"></i>
+                          </div>
+                          <div class="square" style="background-color: #FFC100;">
+                            <i class="fa-solid fa-star" style="color: #f9f8f6;"></i>
+                         </div>
+                         <div class="square" style="background-color: #4FCE5D;">
+                            <i class="fa-solid fa-thumbs-up"></i>
+                         </div>
+                        </div>
+                          <img src="https://samahitawirotama.com/wp-content/uploads/2019/02/tips-untuk-meningkatkan-profesionalisme-dalam-bisnis.jpg" style=" position: relative;
+                          display: inline-block;" alt="Your Image Description">
+                          <div class="photo" style="margin: -50px 0 0 290px; ">
+                            <i class="fa-regular fa-image" style="color: #f4f5f5;"></i> <p style="color: #FFFFFF; padding-left: 2px;">5</p>
+                          </div>
+                          <p style="margin-top: 4px;"><span>&#x1F1F3;&#x1F1F1;</span>
+                             Example Address 88, 123456, Amsterdam</p>
+                        </div>
+                        <div class="card-action">
+                          <div class="row" style="display: flex; justify-content: space-between;">
+                            <div style="margin: 10px 0 0 0;">  
+                                <p><i class="fa-solid fa-star" style="color: #FFD43B;"></i> 5/5 (111)</p>
+                            </div>
+                            <div>                                
+                                <button class="btn icon-right waves-effect waves-light" style="margin: 10px 0 0 0; background-color: #109CD9;" type="submit" name="action">
+                                    View Details
+                                </button>  
+                            </div>
+                          </div>
+                        </div>                        
+                    </div>
+
+                    <div class="card">
+                        <div class="card-content">
+                        <div class="row" style="display: flex; align-items: center;">                        
+                          <span class="card-title">Example Service 10</span>
+                          <div class="square" style="background-color:#17BBFF;">
+                             <i class="fa-solid fa-thumbs-up"></i>
+                          </div>
+                          <!-- <div class="square" style="background-color: #FFC100;">
+                            <i class="fa-solid fa-star" style="color: #f9f8f6;"></i>
+                         </div> -->
+                         <div class="square" style="background-color: #4FCE5D;">
+                            <i class="fa-solid fa-thumbs-up"></i>
+                         </div>
+                        </div>
+                          <img src="https://www.lokerkaltim.id/storage/articles/-7F3OF.jpg" style=" position: relative;
+                          display: inline-block;" alt="Your Image Description">
+                          <div class="photo" style="margin: -50px 0 0 290px; ">
+                            <i class="fa-regular fa-image" style="color: #f4f5f5;"></i> <p style="color: #FFFFFF; padding-left: 2px;">5</p>
+                          </div>
+                          <p style="margin-top: 4px;"><span>&#x1F1F3;&#x1F1F1;</span>
+                             Example Address 88, 123456, Amsterdam</p>
+                        </div>
+                        <div class="card-action">
+                          <div class="row" style="display: flex; justify-content: space-between;">
+                            <div style="margin: 10px 0 0 0;">  
+                                <p><i class="fa-solid fa-star" style="color: #FFD43B;"></i> 5/5 (111)</p>
+                            </div>
+                            <div>                                
+                                <button class="btn icon-right waves-effect waves-light" style="margin: 10px 0 0 0; background-color: #109CD9;" type="submit" name="action">
+                                    View Details
+                                </button>  
+                            </div>
+                          </div>
+                        </div>                        
+                    </div>
+
+                    <div class="card">
+                        <div class="card-content">
+                        <div class="row" style="display: flex; align-items: center;">                        
+                          <span class="card-title">Example Service 11</span>
+                          <!-- <div class="square" style="background-color:#17BBFF;">
+                             <i class="fa-solid fa-thumbs-up"></i>
+                          </div> -->
+                          <div class="square" style="background-color: #FFC100;">
+                            <i class="fa-solid fa-star" style="color: #f9f8f6;"></i>
+                         </div>
+                         <div class="square" style="background-color: #4FCE5D;">
+                            <i class="fa-solid fa-thumbs-up"></i>
+                         </div>
+                        </div>
+                          <img src="https://www.programipos.co.id/wp-content/uploads/2023/08/Bersikap-Profesional-dalam-Bekerja-Ini-Dia-6-Tipsnya-scaled.jpg" style=" position: relative;
+                          display: inline-block;" alt="Your Image Description">
+                          <div class="photo" style="margin: -50px 0 0 290px; ">
+                            <i class="fa-regular fa-image" style="color: #f4f5f5;"></i> <p style="color: #FFFFFF; padding-left: 2px;">5</p>
+                          </div>
+                          <p style="margin-top: 4px;"><span>&#x1F1F3;&#x1F1F1;</span>
+                             Example Address 88, 123456, Amsterdam</p>
+                        </div>
+                        <div class="card-action">
+                          <div class="row" style="display: flex; justify-content: space-between;">
+                            <div style="margin: 10px 0 0 0;">  
+                                <p><i class="fa-solid fa-star" style="color: #FFD43B;"></i> 5/5 (111)</p>
+                            </div>
+                            <div>                                
+                                <button class="btn icon-right waves-effect waves-light" style="margin: 10px 0 0 0; background-color: #109CD9;" type="submit" name="action">
+                                    View Details
+                                </button>  
+                            </div>
+                          </div>
+                        </div>                        
+                    </div>
+
+                    <div class="card">
+                        <div class="card-content">
+                        <div class="row" style="display: flex; align-items: center;">                        
+                          <span class="card-title">Example Service 12</span>
+                          <!-- <div class="square" style="background-color:#17BBFF;">
+                             <i class="fa-solid fa-thumbs-up"></i>
+                          </div> -->
+                          <!-- <div class="square" style="background-color: #FFC100;">
+                            <i class="fa-solid fa-star" style="color: #f9f8f6;"></i>
+                         </div> -->
+                         <div class="square" style="background-color: #4FCE5D;">
+                            <i class="fa-solid fa-thumbs-up"></i>
+                         </div>
+                        </div>
+                          <img src="https://media.graphassets.com/cUAwGhfaScuGxiQhN28C" style=" position: relative;
+                          display: inline-block;" alt="Your Image Description">
+                          <div class="photo" style="margin: -50px 0 0 290px; ">
+                            <i class="fa-regular fa-image" style="color: #f4f5f5;"></i> <p style="color: #FFFFFF; padding-left: 2px;">5</p>
+                          </div>
+                          <p style="margin-top: 4px;"><span>&#x1F1F3;&#x1F1F1;</span>
+                             Example Address 88, 123456, Amsterdam</p>
+                        </div>
+                        <div class="card-action">
+                          <div class="row" style="display: flex; justify-content: space-between;">
+                            <div style="margin: 10px 0 0 0;">  
+                                <p><i class="fa-solid fa-star" style="color: #FFD43B;"></i> 5/5 (111)</p>
+                            </div>
+                            <div>                                
+                                <button class="btn icon-right waves-effect waves-light" style="margin: 10px 0 0 0; background-color: #109CD9;" type="submit" name="action">
+                                    View Details
+                                </button>  
+                            </div>
+                          </div>
+                        </div>                        
+                    </div>
+                </div>
+
+
+
+
+
+
+                <!-- End content -->
+            </div>
+
+            <div class="row" id="" style="">
+                <div class="col s12 project_cube" id="menu_cube" style="display: none;">
+
+                    <div class="row menu_item" id="menu_item_1" style="border-bottom: 1px solid white;" onclick='' >
+                        <div class="col s3 valign_wrapper_center" style="padding: 0px; height: inherit;">
+                            <span class="ea_menu" style="font-size: 14pt;" >
+                                <span class="material-symbols-outlined">widgets</span>
+                            </span>
+                        </div>
+                        <div class="col s9 valign-wrapper" style="padding: 0px; height: inherit;">
+                            <span class="ea_menu" style="font-size: 11pt;" >Dashboard<span>
+                        </div>
+                    </div>
+
+                    <div class="row menu_item" id="menu_item_1" style="" onclick='' >
+                        <div class="col s3 valign_wrapper_center" style="padding: 0px; height: inherit;">
+                            <span class="ea_menu" style="font-size: 14pt;" >
+                                <i class="fa-solid fa-layer-group"></i>
+                            </span>
+                        </div>
+                        <div class="col s9 valign-wrapper" style="padding: 0px; height: inherit;">
+                            <span class="ea_menu" style="font-size: 11pt;" >Incoming Request<span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.0.3-beta/dist/js/materialize.min.js"></script>
+        <script src="https://kit.fontawesome.com/4e3b4074a3.js" crossorigin="anonymous"></script>
+        
+	</body>
+</html>
