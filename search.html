@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+		<title>Offertepunt Admin Panel</title>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+		<link href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.0.3-beta/dist/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection" />
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <style>
+            :root {
+                --color_2: #060B57; 
+                --color_3: #109CD9;
+                --color_4: #D4D9E8;
+                --color_5: #AAAAAA;
+                --color_7: #CDCEDD; 
+                --color_flow: #4FCE5D;
+                --color_alert: #E93535;
+                --color_accent_fb: #EC771A;
+                --color_text_1: #000000;
+                --color_text_2: #FFFFFF;
+                --color_cancel: #ECF1F5;
+            }
+            [type=checkbox].filled-in:checked+span:not(.lever):before{
+                top: 3px;
+            }
+            [type=checkbox].filled-in:checked+span:not(.lever):after{
+                top: 3px;
+                border-radius: 5px;
+                background-color: var(--color_3);
+                border: 2px solid var(--color_3);
+            }
+            .but{
+                margin: 0px;
+                opacity: 1;
+                outline: 0;
+                height: 35px;
+                font-size: 8pt;
+                min-width: 58px;
+                transition: .2s;
+                line-height: 3.2;
+                border-radius: 5px;
+                letter-spacing: .5px;
+                padding: 0rem 0.75rem;
+                border: none;
+                cursor: pointer;
+                font-weight: bold;
+                text-align: center;
+                display: inline-block;
+                text-decoration: none;
+                vertical-align: middle;
+                background-image: unset;
+                text-transform: uppercase;
+                border: 1px solid var(--color_3);
+                color: var(--color_text_2);
+                background-color: var(--color_3);
+            }
+            .but:hover{
+                color: var(--color_3);
+                background-color: var(--color_text_2);
+                border: 1px solid var(--color_3);
+            }
+            .but_dark{
+                color: var(--color_text_2);
+                background-color: var(--color_2);
+                border: 1px solid var(--color_2);
+            }
+            .but_dark:hover{
+                color: var(--color_text_1);
+                background-color: var(--color_text_2);
+                border: 1px solid var(--color_2);
+            }
+            .but_cancel{
+                color: var(--color_text_2);
+                background-color: var(--color_7);
+                border: 1px solid var(--color_7);
+            }
+            .but_cancel:hover{
+                color: var(--color_7);
+                background-color: var(--color_text_2);
+                border: 1px solid transparent;
+            }
+            .valign_wrapper_center{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            .valign_wrapper_right{
+                display: flex;
+                align-items: center;
+                justify-content: right;
+            }
+            .a_white{
+                color: white;
+                cursor: pointer;
+            }
+            .a_flow{
+                color: var(--color_flow);
+                cursor: pointer;
+            }
+            :is(.a_white:hover, .a_flow:hover){
+                color: var(--color_3);
+            }
+        </style>
+
+        <style>
+            #menu_cube{
+                top: 4.6rem; 
+                left: 0px; 
+                width: 15vw; 
+                font-size: 8pt; 
+                position: fixed; 
+                z-index: 10000;
+                border-radius: 0px 0px 5px 0px;
+                background-color: var(--color_2);
+                padding: 0rem 1rem;
+            }
+            div span.ea_menu{
+                color: var(--color_text_2);
+            }
+            .menu_item{
+                cursor: pointer;
+                font-size: 11pt;
+                margin: 0px;
+                padding: 0px;
+                height: 50px;
+            }
+        </style>
+
+        <style>
+            input[type="search"] {
+            border: none;
+            border-bottom: none;
+            outline: none;
+            background: transparent;
+            margin: 0 0 0 20px;
+            border-right: 1px solid #CDCEDD;
+            padding: 1px 0 0 0;
+        }
+
+        .input_2[type="search"] {
+            border: none;
+            border-bottom: none;
+            outline: none;
+            background: transparent;
+            margin: 0 0 0 20px;
+            /* border-right: 1px solid #CDCEDD; */
+            padding: 13px 0 0 0;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 20px;
+            background-color: #109CD9; /* Warna latar belakang tombol */
+            color: white; /* Warna teks tombol */
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049; /* Warna latar belakang tombol saat dihover */
+        }
+        
+        hr{
+            width: 98vw;
+            color: #CDCEDD;
+        }
+        
+        </style>
+	</head>
+	<body>
+        <div class="section" id="" style="padding: 0px; height: 100vh; width: 100vw;">
+            
+            <div class="row" id="navbar_cube" style=" height: 4.5rem;">
+                <div class="col s12" style="background-color: var(--color_2); box-shadow: rgb(0 0 0 / 27%) 0px 2px 3px 2px">
+
+                    <div class="row" style="">
+                        <div class="col s3" style="">
+                            <div class="row" style="">
+                                <div class="col s2" style="height: 4.5rem;">
+                                    <div class="valign_wrapper_center" style="height: 4.5rem;" >
+                                        <a class="a_white" style="font-size: 18pt;" onclick='$(`#menu_cube`).toggle()' ><i class="fa-solid fa-layer-group"></i></a>
+                                    </div>
+                                </div>
+                                <div class="col s10" style="padding: 1rem 0rem;">
+                                    <div class="valign-wrapper" style="height: 2.5rem; padding-left: 1.5rem; border-left: 1px solid var(--color_text_2);" >
+                                        <img class="responsive-img" src="https://cdn.swirf.com/project/img_offertepunt_white.png" style="max-width: 12rem; max-height: 1.875rem; cursor: pointer;" onClick="window.location.reload()">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col s8 valign-wrapper" style="height: 4.5rem; padding-left: 1.8rem;">
+                        </div>
+                        <div class="col s1 valign_wrapper_right" style="text-align: right; border-radius: 5px; height: 65px; padding-right: 1.5rem; color: white;"> 
+                            <img class="responsive-img circle" onclick='$(`#menu_ea_account`).toggle()' src="https://cdn.swirf.com/project/noimagefound.jpg"  id="profile_status" title="member: Erwin" style="cursor: pointer; height: 3rem; width: 3rem; display: inline-block; border: 3px solid white;">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        
+            <div class="project_desktop" id="desktop_cube" style="float: left; width: 100vw; height: calc( 100vh - 4.5rem); overflow-x: hidden; overflow-y: auto; background-color: var(--color_cancel);" >
+
+                <!-- content -->
+                
+                <div class="row">
+                    <div style="margin: 40px 0 0 30px; width: 10vw;">
+                        <p style="font-size: medium;">220 Result</p>
+                    </div>
+                    <div style="margin: 5px 0 0 65vw; width: 8vw;">
+                        <div style="background-color: #109CD9; border-radius: 10px; margin: 55px 0 0 0; padding: 0 0 0 10px; color: #FFFFFF;">
+                            <p>search by categories</p>
+
+                        </div>
+                    </div>
+                    <div style="margin: 45px 0 0 1vw; width: 30vw;">
+                        <p>Order By:</p>
+                    </div>
+                    <div class="input-field">
+                        <select name="" id="">
+                            <option value="" selected>Price</option>
+                            <option value="">Test</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div style="justify-content: center; display: flex; margin: 40px 0 0 0;">
+                    <div style="width: 90vw; border-radius: 30px; box-shadow: rgb(0 0 0 / 27%) 0px 2px 3px 2px">
+                        <div class="row">
+                            <i class="fa-solid fa-magnifying-glass" style="font-size:x-large; color: #109CD9; margin: 15px 0 10px 40px;"></i> <input type="search" placeholder="Job title or keyword" style="width: 10vw; height: 6vh;">
+                            <i class="fa-solid fa-location-dot" style="font-size:x-large; color: #109CD9; margin: 15px 0 10px 50px;"></i> <input type="search" placeholder="Amsterdam" class="input_2" style="width: 10vw; height: 4vh;">
+                            <div style="margin: 10px 0 10px 55vw; width: 8vw;">
+                                <button>Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><br><br>
+                
+                
+                <div class="row" style="margin: 20px 0 0 20px;">
+                    <strong><p>Service Provider Title</p></strong>
+                </div>
+                <div style = "margin: 0 0 0 80vw; padding: 0 30px 0 0;">                    
+                <div class="card">
+                    <div class="card-image">
+                    <img src="https://cloudfrontgharpediabucket.gharpedia.com/uploads/2017/02/0308020011-04-Application-of-Paint.jpg" style="width: 15vw; border-radius: 6px; margin: 25px 0 0 25px;">
+                    </div>
+                    <div class="card-content">
+                    <div class="row" >
+                        <strong><p style="width: 150px;">Simple Title</p></strong>
+                        <div>
+                            <div style="margin: 0 0 0 80px;" class="row">
+                                <i class="fa-solid fa-star" style="color: #FAC51F ;"></i> 
+                            
+                                <strong><p>4.5</p></strong>
+                            
+                                (12)
+                            </div>
+                        </div>
+                    </div><br>
+                    <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p><br>
+                    <p style="text-align: right;"><i class="fa-solid fa-crown" style="color: #4FCE5D;"></i> Paid Promotion</p>
+                    </div>
+                    
+                </div>
+  
+                </div>
+                <div style="margin: -410px 0 0 20px; width: 75vw;">
+                    <p style="text-align: justify;">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus condimentum justo sapien, quis feugiat urna pharetra eget. Nam dictum lectus risus, ut aliquet elit accumsan dictum. Duis elementum, mi a lacinia tempor, ligula ex egestas ligula, efficitur porttitor velit velit eu elit. Proin eget tellus eget mi faucibus pharetra. Suspendisse faucibus gravida hendrerit. Sed porttitor dolor ligula, quis consequat turpis finibus at. Donec eget nibh quis odio lobortis congue nec vel nunc. Aliquam ut dolor sed magna ornare vestibulum eu rutrum quam. Cras ultricies neque eu velit ornare, at vehicula augue euismod. Morbi nec volutpat enim. Proin tincidunt arcu nec libero rutrum varius. Suspendisse a dapibus justo. In eu mauris eget nibh rutrum vehicula.
+                    </p>
+                </div>
+                <div class="row" style="margin: 0 0 0 20px; width: 15vw;">
+                    <div><i class="fa-solid fa-location-dot" style="color: crimson;"></i></div> <div style="width: 20vw; margin: -14px 0 0 5px;"><p>37 Maarssenbroeksedjik, 3542 DM, Netherland (50km) </p></div>
+                </div>
+
+                <div style="width: 74vw; border-radius: 6px; margin: 20px 0 0 20px;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d77979.66565660357!2d4.821560489152866!3d52.35474184398587!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c63fb5949a7755%3A0x6600fd4cb7c0af8d!2sAmsterdam%2C%20Belanda!5e0!3m2!1sid!2sid!4v1706092846557!5m2!1sid!2sid" width="1435" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <div style="margin: 0 0 0 57vw; width: 15vw;">
+                    <div><i class="fa-solid fa-location-dot" style="color: crimson;"></i></div> <div style="width: 20vw; margin: -33px 0 0 15px;"><p>15 Providers found within 50km Radius <a href="#">View More</a> </p></div>
+                </div>
+
+                <div class="row" style=" margin: 60px 0 0 20px;">
+                    <div>
+                        <img src="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2021/7/14/1/shutterstock_kitzcorner-768245098.jpeg.rend.hgtvcom.1280.960.suffix/1626297157737.jpeg" alt="" style="width: 20vw; border-radius: 10px; height: 20vh;">
+                    </div>
+                    <div class="row" style="margin: -18px 0 0 10px;">
+                        <div style="width: 8vw;"><strong><p>Service Provider Title</p></strong></div>
+                        <div><span class="material-symbols-outlined" style="color: #4FCE5D; margin: 15px 0 0 0; font-size: medium;">verified</span></div>
+                        <div class="row" style="margin: 0 0 0 29vw;">
+                            <div style="width: 13vw;">
+                                <p>500 <i class="fa-solid fa-arrow-right-arrow-left" style="color: #109CD9;"></i> Since, Apr '19</p>  
+                            </div>
+                            <div style="margin: 15px 0 0 0;">
+                                <i class="fa-solid fa-star" style="color: #FAC51F ;"></i> 
+                            </div>
+                            <div>
+                                <strong><p>4.5</p></strong>
+                            </div>
+                            <div>
+                                <p>(12)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin: 30px 0 0 -1038px; width: 54vw; ">
+                        <p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper vulputate efficitur. Curabitur vitae porta ipsum, quis commodo nunc. Proin a porta leo. Integer vel molestie tortor. Maecenas viverra augue leo, et aliquet justo viverra vitae. Donec et convallis eros. Nullam eleifend posuere nunc, eu laoreet metus imperdiet eget. Vivamus non tellus at dui bibendum cursus quis non tellus. Duis pretium risus a elementum consequat. Cras malesuada massa nulla, quis tincidunt metus malesuada ac. Sed varius sed orci et mollis. In lectus eros, viverra vel tortor vel, viverra auctor arcu.</p>
+                    </div><br>
+                    <div class="row" style="margin: 180px 0 0 -1125px; width: 15vw;">
+                        <div><i class="fa-solid fa-location-dot" style="color: crimson;"></i></div> <div style="width: 20vw; margin: -14px 0 0 5px;"><p>37 Maarssenbroeksedjik, 3542 DM, Netherland (50km) </p></div>
+                    </div>
+                </div>
+                
+                <div class="row" style=" margin: 60px 0 0 20px;">
+                    <div>
+                        <img src="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2021/7/14/1/shutterstock_kitzcorner-768245098.jpeg.rend.hgtvcom.1280.960.suffix/1626297157737.jpeg" alt="" style="width: 20vw; border-radius: 10px; height: 20vh;">
+                    </div>
+                    <div class="row" style="margin: -18px 0 0 10px;">
+                        <div style="width: 8vw;"><strong><p>Service Provider Title</p></strong></div>
+                        <div><span class="material-symbols-outlined" style="color: #4FCE5D; margin: 15px 0 0 0; font-size: medium;">verified</span></div>
+                        <div class="row" style="margin: 0 0 0 29vw;">
+                            <div style="width: 13vw;">
+                                <p>500 <i class="fa-solid fa-arrow-right-arrow-left" style="color: #109CD9;"></i> Since, Apr '19</p>  
+                            </div>
+                            <div style="margin: 15px 0 0 0;">
+                                <i class="fa-solid fa-star" style="color: #FAC51F ;"></i> 
+                            </div>
+                            <div>
+                                <strong><p>4.5</p></strong>
+                            </div>
+                            <div>
+                                <p>(12)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="margin: 30px 0 0 -1038px; width: 54vw; ">
+                        <p style="text-align: justify;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse semper vulputate efficitur. Curabitur vitae porta ipsum, quis commodo nunc. Proin a porta leo. Integer vel molestie tortor. Maecenas viverra augue leo, et aliquet justo viverra vitae. Donec et convallis eros. Nullam eleifend posuere nunc, eu laoreet metus imperdiet eget. Vivamus non tellus at dui bibendum cursus quis non tellus. Duis pretium risus a elementum consequat. Cras malesuada massa nulla, quis tincidunt metus malesuada ac. Sed varius sed orci et mollis. In lectus eros, viverra vel tortor vel, viverra auctor arcu.</p>
+                    </div><br>
+                    <div class="row" style="margin: 180px 0 0 -1125px; width: 15vw;">
+                        <div><i class="fa-solid fa-location-dot" style="color: crimson;"></i></div> <div style="width: 20vw; margin: -14px 0 0 5px;"><p>37 Maarssenbroeksedjik, 3542 DM, Netherland (50km) </p></div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin: 20px 0 0 20px;">
+                    <strong><p>Service Provider Title</p></strong>
+                </div>
+                <div style="margin: -10px 0 0 20px; width: 75vw;">
+                    <p style="text-align: justify;">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus condimentum justo sapien, quis feugiat urna pharetra eget. Nam dictum lectus risus, ut aliquet elit accumsan dictum. Duis elementum, mi a lacinia tempor, ligula ex egestas ligula, efficitur porttitor velit velit eu elit. Proin eget tellus eget mi faucibus pharetra. Suspendisse faucibus gravida hendrerit. Sed porttitor dolor ligula, quis consequat turpis finibus at. Donec eget nibh quis odio lobortis congue nec vel nunc. Aliquam ut dolor sed magna ornare vestibulum eu rutrum quam. Cras ultricies neque eu velit ornare, at vehicula augue euismod. Morbi nec volutpat enim. Proin tincidunt arcu nec libero rutrum varius. Suspendisse a dapibus justo. In eu mauris eget nibh rutrum vehicula.
+                    </p>
+                </div>
+                <div class="row" style="margin: 0 0 0 20px; width: 15vw;">
+                    <div><i class="fa-solid fa-location-dot" style="color: crimson;"></i></div> <div style="width: 20vw; margin: -14px 0 0 5px;"><p>37 Maarssenbroeksedjik, 3542 DM, Netherland (50km) </p></div>
+                </div>
+
+                <div class="row" style="margin: 20px 0 0 20px;">
+                    <strong><p>Service Provider Title</p></strong>
+                </div>
+                <div style="margin: -10px 0 0 20px; width: 75vw;">
+                    <p style="text-align: justify;">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus condimentum justo sapien, quis feugiat urna pharetra eget. Nam dictum lectus risus, ut aliquet elit accumsan dictum. Duis elementum, mi a lacinia tempor, ligula ex egestas ligula, efficitur porttitor velit velit eu elit. Proin eget tellus eget mi faucibus pharetra. Suspendisse faucibus gravida hendrerit. Sed porttitor dolor ligula, quis consequat turpis finibus at. Donec eget nibh quis odio lobortis congue nec vel nunc. Aliquam ut dolor sed magna ornare vestibulum eu rutrum quam. Cras ultricies neque eu velit ornare, at vehicula augue euismod. Morbi nec volutpat enim. Proin tincidunt arcu nec libero rutrum varius. Suspendisse a dapibus justo. In eu mauris eget nibh rutrum vehicula.
+                    </p>
+                </div>
+                <div class="row" style="margin: 0 0 0 20px; width: 15vw;">
+                    <div><i class="fa-solid fa-location-dot" style="color: crimson;"></i></div> <div style="width: 20vw; margin: -14px 0 0 5px;"><p>37 Maarssenbroeksedjik, 3542 DM, Netherland (50km) </p></div>
+                </div>
+
+                <div class="row" style="margin: 20px 0 0 20px;">
+                    <strong><p>Popular Searches : </p></strong>
+                </div>
+                <div class="row" style="margin: 20px 0 0 20px; gap: 50px;">
+                    <div>
+                        <div>
+                            <img src="https://cloudfrontgharpediabucket.gharpedia.com/uploads/2017/02/0308020011-04-Application-of-Paint.jpg" 
+                            style="width: 13vw; border-radius: 6px; box-shadow: rgb(0 0 0 / 27%) 0px 2px 3px 2px">
+                        </div>
+                        <div>
+                            <p>Service Provider Title</p>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div>
+                            <img src="https://cloudfrontgharpediabucket.gharpedia.com/uploads/2017/02/0308020011-04-Application-of-Paint.jpg" 
+                            style="width: 13vw; border-radius: 6px; box-shadow: rgb(0 0 0 / 27%) 0px 2px 3px 2px">
+                        </div>
+                        <div>
+                            <p>Service Provider Title</p>
+                        </div>
+                    </div>      
+
+                    <div>
+                        <div>
+                            <img src="https://cloudfrontgharpediabucket.gharpedia.com/uploads/2017/02/0308020011-04-Application-of-Paint.jpg" 
+                            style="width: 13vw; border-radius: 6px; box-shadow: rgb(0 0 0 / 27%) 0px 2px 3px 2px">
+                        </div>
+                        <div>
+                            <p>Service Provider Title</p>
+                        </div>
+                    </div>      
+
+                    <div>
+                        <div>
+                            <img src="https://cloudfrontgharpediabucket.gharpedia.com/uploads/2017/02/0308020011-04-Application-of-Paint.jpg" 
+                            style="width: 13vw; border-radius: 6px; box-shadow: rgb(0 0 0 / 27%) 0px 2px 3px 2px">
+                        </div>
+                        <div>
+                            <p>Service Provider Title</p>
+                        </div>
+                    </div>    
+                    
+                    <div>
+                        <div>
+                            <img src="https://cloudfrontgharpediabucket.gharpedia.com/uploads/2017/02/0308020011-04-Application-of-Paint.jpg" 
+                            style="width: 13vw; border-radius: 6px; box-shadow: rgb(0 0 0 / 27%) 0px 2px 3px 2px">
+                        </div>
+                        <div>
+                            <p>Service Provider Title</p>
+                        </div>
+                    </div>    
+                </div>
+                <br><br>
+                <hr>
+
+                <div class="row" style="margin: 20px 0 0 20px; gap: 20px;">
+                    <div style="border-radius: 20px; background-color: darkgrey; width: 13vw; height: 2vw; padding: 10px 0 0 20px;">
+                        <i class="fa-solid fa-magnifying-glass" style="color: #FFFFFF;"></i>
+                        <div style="margin: -30px 0 0 40px;"><p style="color: #FFFFFF;">Art Gallery Cleaning </p></div>
+                    </div>
+
+                    <div style="border-radius: 20px; background-color: darkgrey; width: 13vw; height: 2vw; padding: 10px 0 0 20px;">
+                        <i class="fa-solid fa-magnifying-glass" style="color: #FFFFFF;"></i>
+                        <div style="margin: -30px 0 0 40px;"><p style="color: #FFFFFF;">Paint Figures </p></div>
+                    </div>
+
+                    <div style="border-radius: 20px; background-color: darkgrey; width: 13vw; height: 2vw; padding: 10px 0 0 20px;">
+                        <i class="fa-solid fa-magnifying-glass" style="color: #FFFFFF;"></i>
+                        <div style="margin: -30px 0 0 40px;"><p style="color: #FFFFFF;"> Digital Art</p></div>
+                    </div>
+
+                    <div style="border-radius: 20px; background-color: darkgrey; width: 13vw; height: 2vw; padding: 10px 0 0 20px;">
+                        <i class="fa-solid fa-magnifying-glass" style="color: #FFFFFF;"></i>
+                        <div style="margin: -30px 0 0 40px;"><p style="color: #FFFFFF;"> Oil Painting</p></div>
+                    </div>
+
+                    <div style="border-radius: 20px; background-color: darkgrey; width: 13vw; height: 2vw; padding: 10px 0 0 20px;">
+                        <i class="fa-solid fa-magnifying-glass" style="color: #FFFFFF;"></i>
+                        <div style="margin: -30px 0 0 40px;"><p style="color: #FFFFFF;"> Figure Painting</p></div>
+                    </div>
+                    
+                </div>
+
+                <div class="row" style="margin: 20px 0 0 20px; gap: 20px;">
+                    <div style="border-radius: 20px; background-color: darkgrey; width: 13vw; height: 2vw; padding: 10px 0 0 20px;">
+                        <i class="fa-solid fa-magnifying-glass" style="color: #FFFFFF;"></i>
+                        <div style="margin: -30px 0 0 40px;"><p style="color: #FFFFFF;">Art Gallery Cleaning </p></div>
+                    </div>
+
+                    <div style="border-radius: 20px; background-color: darkgrey; width: 13vw; height: 2vw; padding: 10px 0 0 20px;">
+                        <i class="fa-solid fa-magnifying-glass" style="color: #FFFFFF;"></i>
+                        <div style="margin: -30px 0 0 40px;"><p style="color: #FFFFFF;">Paint Figures </p></div>
+                    </div>
+
+                    <div style="border-radius: 20px; background-color: darkgrey; width: 13vw; height: 2vw; padding: 10px 0 0 20px;">
+                        <i class="fa-solid fa-magnifying-glass" style="color: #FFFFFF;"></i>
+                        <div style="margin: -30px 0 0 40px;"><p style="color: #FFFFFF;"> Digital Art</p></div>
+                    </div>
+
+                    <div style="border-radius: 20px; background-color: darkgrey; width: 13vw; height: 2vw; padding: 10px 0 0 20px;">
+                        <i class="fa-solid fa-magnifying-glass" style="color: #FFFFFF;"></i>
+                        <div style="margin: -30px 0 0 40px;"><p style="color: #FFFFFF;"> Oil Painting</p></div>
+                    </div>
+
+                    <div style="border-radius: 20px; background-color: darkgrey; width: 13vw; height: 2vw; padding: 10px 0 0 20px;">
+                        <i class="fa-solid fa-magnifying-glass" style="color: #FFFFFF;"></i>
+                        <div style="margin: -30px 0 0 40px;"><p style="color: #FFFFFF;"> Figure Painting</p></div>
+                    </div>
+                    
+                </div>
+
+                <br><br>
+
+
+
+
+
+
+
+
+
+                <!-- end content -->
+            </div>
+
+            <div class="row" id="" style="">
+                <div class="col s12 project_cube" id="menu_cube" style="display: none;">
+
+                    <div class="row menu_item" id="menu_item_1" style="border-bottom: 1px solid white;" onclick='' >
+                        <div class="col s3 valign_wrapper_center" style="padding: 0px; height: inherit;">
+                            <span class="ea_menu" style="font-size: 14pt;" >
+                                <span class="material-symbols-outlined">widgets</span>
+                            </span>
+                        </div>
+                        <div class="col s9 valign-wrapper" style="padding: 0px; height: inherit;">
+                            <span class="ea_menu" style="font-size: 11pt;" >Dashboard<span>
+                        </div>
+                    </div>
+
+                    <div class="row menu_item" id="menu_item_1" style="" onclick='' >
+                        <div class="col s3 valign_wrapper_center" style="padding: 0px; height: inherit;">
+                            <span class="ea_menu" style="font-size: 14pt;" >
+                                <i class="fa-solid fa-layer-group"></i>
+                            </span>
+                        </div>
+                        <div class="col s9 valign-wrapper" style="padding: 0px; height: inherit;">
+                            <span class="ea_menu" style="font-size: 11pt;" >Incoming Request<span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+		</div>
+
+		<script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.0.3-beta/dist/js/materialize.min.js"></script>
+        <script src="https://kit.fontawesome.com/4e3b4074a3.js" crossorigin="anonymous"></script>
+        
+	</body>
+</html>
